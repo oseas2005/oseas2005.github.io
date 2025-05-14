@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Mensaje para Ti, Mi Amor ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+            background-color: #f8f0e3; /* Un fondo cálido y suave */
+            color: #544a3d; /* Un color de texto terroso */
+        }
+        h1 {
+            color: #d87093; /* Un rosa suave para el título */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+        .opciones-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            margin: 30px auto;
+            max-width: 650px;
+        }
+        .opcion {
+            padding: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            box-shadow: 3px 3px 8px #b8b0a4; /* Sombra suave */
+        }
+        .opcion:hover {
+            transform: scale(1.05);
+            box-shadow: 5px 5px 10px #b8b0a4;
+        }
+        .enojada {
+            background-color: #ff6f69; /* Rojo más vibrante */
+        }
+        .triste {
+            background-color: #4a6572; /* Azul grisáceo oscuro */
+        }
+        .feliz {
+            background-color: #a78dff; /* Morado más moderno */
+        }
+        .emocionada {
+            background-color: #6cc4a1; /* Verde más alegre */
+        }
+        .cansada {
+            background-color: #d6a2e8; /* Lila suave */
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Un Mensaje Especial para Ti 💖</h1>
+    <h2>¿Cómo te sientes hoy, mi amor? 😊</h2>
+    <div class="opciones-container">
+        <div class="opcion enojada" onclick="redirigir('enojada')">😠 Enojada</div>
+        <div class="opcion triste" onclick="redirigir('triste')">😢 Triste</div>
+        <div class="opcion feliz" onclick="redirigir('feliz')">😰 miedo</div>
+        <div class="opcion emocionada" onclick="redirigir('emocionada')">🤩 feliz</div>
+        <div class="opcion cansada" onclick="redirigir('cansada')">😴 Cansada</div>
+    </div>
+
+    <script>
+        function redirigir(estado) {
+            window.location.href = 'mensaje.html?estado=' + estado;
+        }
+    </script>
+</body>
+</html>
