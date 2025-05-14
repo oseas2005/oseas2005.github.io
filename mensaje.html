@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Mensaje Especial</title>
+    <style id="estilosDinamicos">
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #mensaje {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        #versiculo {
+            font-style: italic;
+            color: #777;
+        }
+        .volver {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .volver:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div id="mensaje"></div>
+    <div id="versiculo"></div>
+    <a href="index.html" class="volver">Volver a elegir cómo te sientes</a>
+
+    <script>
+        const mensajes = {
+            enojada: [
+  { texto: "Aunque tu ánimo esté en el suelo, recuerda que en Dios todo es consuelo.",versiculo: "Bendito sea el Dios de toda consolación. — 2 Corintios 1:3",colorFondo: "#ffe082",colorTexto: "#ef6c00"
+  },
+  { texto: "Cuando el miedo te visite, deja que tu fe lo limite.",versiculo: "El perfecto amor echa fuera el temor. — 1 Juan 4:18",colorFondo: "#e1bee7",colorTexto: "#8e24aa"
+  },
+  { texto: "En la tormenta más fuerte, su voz sigue siendo tu suerte.",versiculo: "Aun los vientos y el mar le obedecen. — Mateo 8:27",colorFondo: "#b2ebf2",colorTexto: "#00838f"
+  },
+  { texto: "Aunque la noche sea larga, Dios sostiene tu alma con calma.",versiculo: "El llanto puede durar toda la noche, pero a la mañana vendrá el gozo. — Salmo 30:5",colorFondo: "#f0f4c3",colorTexto: "#9e9d24"
+  },
+  { texto: "Si hoy tu corazón pesa, Él lo aligera con su promesa.",versiculo: "Echen sobre él toda ansiedad, porque él cuida de ustedes. — 1 Pedro 5:7",colorFondo: "#ffe0b2",colorTexto: "#f57c00"
+  },
+  { texto: "Aunque sientas que te caes, Dios es quien siempre te alza.",versiculo: "Cuando caí, me levantó el Señor. — Salmo 145:14",colorFondo: "#d7ccc8",colorTexto: "#5d4037"
+  },
+  { texto: "Hoy parece gris el cielo, pero el sol de Dios siempre brilla.",versiculo: "Tú eres mi lámpara, oh Señor; tú alumbras mis tinieblas. — 2 Samuel 22:29",colorFondo: "#cfd8dc",colorTexto: "#37474f"
+  },
+  { texto: "Cuando pienses que no puedes más, mira a Dios y avanzarás.",versiculo: "Mi gracia es suficiente para ti. — 2 Corintios 12:9",colorFondo: "#f8bbd0",colorTexto: "#ad1457"
+  },
+  { texto: "Si el camino se vuelve incierto, Él es tu guía en el desierto.",versiculo: "Reconócelo en todos tus caminos, y él enderezará tus sendas. — Proverbios 3:6",colorFondo: "#b2dfdb",colorTexto: "#00796b"
+  },
+  { texto: "Duele ahora, sí, lo sé; pero Dios ya tiene el porqué.",versiculo: "Todo tiene su tiempo, y todo lo que se quiere debajo del cielo tiene su hora. — Eclesiastés 3:1",colorFondo: "#d1c4e9",colorTexto: "#7b1fa2"
+  },
+  { texto: "En tus días de quebranto, Él escucha incluso tu llanto.",versiculo: "Este pobre clamó, y le oyó el Señor. — Salmo 34:6",colorFondo: "#ffccbc",colorTexto: "#d84315"
+  },
+  { texto: "No estás sola en la batalla, hay un Dios que nunca falla.",versiculo: "Él va contigo; no te dejará ni te desamparará. — Deuteronomio 31:6",colorFondo: "#c8e6c9",colorTexto: "#388e3c"
+  },
+  { texto: "Cuando el alma está cansada, su amor la deja renovada.",versiculo: "Renueva mis fuerzas. Me guía por sendas correctas. — Salmo 23:3",colorFondo: "#fff59d",colorTexto: "#fbc02d"
+  },
+  { texto: "Si el dolor no da tregua, deja que Dios te sostenga.",versiculo: "Aunque mi corazón desfallezca, tú eres la fortaleza de mi vida. — Salmo 73:26",colorFondo: "#ffebee",colorTexto: "#c62828"
+  },
+  { texto: "Aunque dudes hoy de ti, Dios jamás se olvidó de ti.",versiculo: "Aunque madre y padre me abandonen, el Señor me recogerá. — Salmo 27:10",
+    colorFondo: "#ede7f6",
+    colorTexto: "#5e35b1"
+  },
+  { texto: "Cuando tu alma se enfríe, acércate y su amor te abriga.",versiculo: "Acérquense a Dios, y Él se acercará a ustedes. — Santiago 4:8",colorFondo: "#e0f2f1",colorTexto: "#004d40"
+  },
+  { texto: "Si hoy todo te sale mal, recuerda que Él tiene un plan.",versiculo: "Yo sé los planes que tengo para ustedes, planes de bienestar. — Jeremías 29:11",colorFondo: "#fce4ec",colorTexto: "#880e4f"
+  },
+  { texto: "Si te sientes débil y rota, Él te abraza y te reconforta.",versiculo: "Mi poder se perfecciona en la debilidad. — 2 Corintios 12:9",colorFondo: "#e8f5e9",colorTexto: "#2e7d32"
+  },
+  { texto: "Cuando todo te lastime, en su amor tu alma se anime.",versiculo: "Él sana a los quebrantados de corazón y venda sus heridas. — Salmo 147:3",colorFondo: "#f3e5f5",colorTexto: "#6a1b9a"
+  },
+  { texto: "Aunque hoy no veas luz, Dios camina tras tu cruz.",versiculo: "El Señor es mi luz y mi salvación; ¿a quién temeré? — Salmo 27:1",colorFondo: "#fff3e0",colorTexto: "#e65100"
+  },
+  { texto: "Cuando creas que no hay salida, su palabra será tu guía.",versiculo: "Lámpara es a mis pies tu palabra, y lumbrera a mi camino. — Salmo 119:105",colorFondo: "#e1f5fe",colorTexto: "#01579b"
+  }
+]
+,
+            triste: [
+  { texto: "Cuando el corazón esté triste, recuerda que nunca estás sola, Dios te abraza aún en tus momentos oscuros.", versiculo: "El Señor está cerca de los quebrantados de corazón. — Salmo 34:18", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "Aunque sientas que el sol ya no brilla, Dios te regalará un nuevo amanecer de esperanza.", versiculo: "La tristeza puede durar toda la noche, pero con el amanecer viene el gozo. — Salmo 30:5", colorFondo: "#e1f5fe", colorTexto: "#0277bd" },
+  { texto: "Las lágrimas hoy te inundan, pero Él las enjuga y te da paz.", versiculo: "Él enjugará toda lágrima de los ojos. — Apocalipsis 21:4", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "No permitas que la tristeza se quede, porque Él tiene algo hermoso preparado para ti.", versiculo: "Porque yo sé los planes que tengo para ustedes, planes de bienestar. — Jeremías 29:11", colorFondo: "#fff9c4", colorTexto: "#fbc02d" },
+  { texto: "Aunque el dolor parezca eterno, Dios te fortalece en cada paso.", versiculo: "Todo lo puedo en Cristo que me fortalece. — Filipenses 4:13", colorFondo: "#dcedc8", colorTexto: "#558b2f" },
+  { texto: "Cuando tu alma se sienta vacía, llena tu corazón con Su amor incondicional.", versiculo: "El Señor es mi pastor; nada me faltará. — Salmo 23:1", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "Recuerda, después de la tormenta viene la calma que solo Él puede darte.", versiculo: "La paz les dejo, mi paz les doy; no se la doy como el mundo la da. — Juan 14:27", colorFondo: "#ffecb3", colorTexto: "#ff6f00" },
+  { texto: "Dios nunca se olvida de ti, incluso cuando el camino es difícil de recorrer.", versiculo: "Yo soy el buen pastor; el buen pastor da su vida por las ovejas. — Juan 10:11", colorFondo: "#f8bbd0", colorTexto: "#c2185b" },
+  { texto: "No te rindas, Dios tiene la fuerza que necesitas para seguir adelante.", versiculo: "En todo esto somos más que vencedores por medio de aquel que nos amó. — Romanos 8:37", colorFondo: "#d1c4e9", colorTexto: "#512da8" },
+  { texto: "Aunque ahora te sientas rota, Él te restaurará y te hará nueva.", versiculo: "Él sana a los quebrantados de corazón y venda sus heridas. — Salmo 147:3", colorFondo: "#c8e6c9", colorTexto: "#2e7d32" },
+  { texto: "Cuando todo se derrumbe, Él será tu roca firme en la que te apoyes.", versiculo: "El Señor es mi roca y mi refugio. — Salmo 18:2", colorFondo: "#fff59d", colorTexto: "#fbc02d" },
+  { texto: "Aunque te sientas sola, nunca lo estarás, Su presencia te rodea.", versiculo: "Y he aquí, yo estoy con ustedes todos los días, hasta el fin del mundo. — Mateo 28:20", colorFondo: "#ffebee", colorTexto: "#c62828" },
+  { texto: "Tu tristeza es solo temporal; Su gozo es eterno.", versiculo: "El gozo del Señor es nuestra fortaleza. — Nehemías 8:10", colorFondo: "#ede7f6", colorTexto: "#5e35b1" },
+  { texto: "Aunque el dolor te haga caer, en Dios siempre encontraras la fuerza para levantarte.", versiculo: "Cuando caí, me levantó el Señor. — Salmo 145:14", colorFondo: "#e0f2f1", colorTexto: "#004d40" },
+  { texto: "Dios te promete consuelo y paz, incluso cuando el alma esté rota.", versiculo: "Bienaventurados los que lloran, porque ellos recibirán consolación. — Mateo 5:4", colorFondo: "#fff3e0", colorTexto: "#e65100" },
+  { texto: "Tu tristeza no te define, Su amor es lo que realmente eres.", versiculo: "Porque yo te he amado con amor eterno. — Jeremías 31:3", colorFondo: "#e1f5fe", colorTexto: "#01579b" },
+  { texto: "Él está contigo en cada paso de tu dolor y cada lágrima que derrames.", versiculo: "En mi angustia clamé al Señor, y él me respondió. — Salmo 120:1", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "Aunque el dolor sea grande, tu esperanza en Él será más grande.", versiculo: "Los que esperan a Jehová tendrán nuevas fuerzas. — Isaías 40:31", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "En cada tristeza hay una semilla de esperanza que Él hará florecer.", versiculo: "Aunque el llanto dure toda la noche, con la mañana llega el gozo. — Salmo 30:5", colorFondo: "#dcedc8", colorTexto: "#558b2f" },
+  { texto: "Si tus fuerzas fallan, Él será tu fortaleza y consuelo.", versiculo: "Dios es nuestro refugio y fortaleza, nuestro pronto auxilio en las tribulaciones. — Salmo 46:1", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "No tienes que cargar sola tu tristeza, Él lleva tus cargas contigo.", versiculo: "Echen sobre él toda ansiedad, porque él cuida de ustedes. — 1 Pedro 5:7", colorFondo: "#ffecb3", colorTexto: "#ff6f00" },
+  { texto: "Tu tristeza no es para siempre, en Él hallarás consuelo y renovación.", versiculo: "Él les dará hermosura en lugar de ceniza. — Isaías 61:3", colorFondo: "#f8bbd0", colorTexto: "#c2185b" }
+]
+,
+            miedo:[
+  { texto: "Cuando el corazón esté triste, recuerda que nunca estás sola, Dios te abraza aún en tus momentos oscuros.", versiculo: "El Señor está cerca de los quebrantados de corazón. — Salmo 34:18", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "Aunque sientas que el sol ya no brilla, Dios te regalará un nuevo amanecer de esperanza.", versiculo: "La tristeza puede durar toda la noche, pero con el amanecer viene el gozo. — Salmo 30:5", colorFondo: "#e1f5fe", colorTexto: "#0277bd" },
+  { texto: "Las lágrimas hoy te inundan, pero Él las enjuga y te da paz.", versiculo: "Él enjugará toda lágrima de los ojos. — Apocalipsis 21:4", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "No permitas que la tristeza se quede, porque Él tiene algo hermoso preparado para ti.", versiculo: "Porque yo sé los planes que tengo para ustedes, planes de bienestar. — Jeremías 29:11", colorFondo: "#fff9c4", colorTexto: "#fbc02d" },
+  { texto: "Aunque el dolor parezca eterno, Dios te fortalece en cada paso.", versiculo: "Todo lo puedo en Cristo que me fortalece. — Filipenses 4:13", colorFondo: "#dcedc8", colorTexto: "#558b2f" },
+  { texto: "Cuando tu alma se sienta vacía, llena tu corazón con Su amor incondicional.", versiculo: "El Señor es mi pastor; nada me faltará. — Salmo 23:1", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "Recuerda, después de la tormenta viene la calma que solo Él puede darte.", versiculo: "La paz les dejo, mi paz les doy; no se la doy como el mundo la da. — Juan 14:27", colorFondo: "#ffecb3", colorTexto: "#ff6f00" },
+  { texto: "Dios nunca se olvida de ti, incluso cuando el camino es difícil de recorrer.", versiculo: "Yo soy el buen pastor; el buen pastor da su vida por las ovejas. — Juan 10:11", colorFondo: "#f8bbd0", colorTexto: "#c2185b" },
+  { texto: "No te rindas, Dios tiene la fuerza que necesitas para seguir adelante.", versiculo: "En todo esto somos más que vencedores por medio de aquel que nos amó. — Romanos 8:37", colorFondo: "#d1c4e9", colorTexto: "#512da8" },
+  { texto: "Aunque ahora te sientas rota, Él te restaurará y te hará nueva.", versiculo: "Él sana a los quebrantados de corazón y venda sus heridas. — Salmo 147:3", colorFondo: "#c8e6c9", colorTexto: "#2e7d32" },
+  { texto: "Cuando todo se derrumbe, Él será tu roca firme en la que te apoyes.", versiculo: "El Señor es mi roca y mi refugio. — Salmo 18:2", colorFondo: "#fff59d", colorTexto: "#fbc02d" },
+  { texto: "Aunque te sientas sola, nunca lo estarás, Su presencia te rodea.", versiculo: "Y he aquí, yo estoy con ustedes todos los días, hasta el fin del mundo. — Mateo 28:20", colorFondo: "#ffebee", colorTexto: "#c62828" },
+  { texto: "Tu tristeza es solo temporal; Su gozo es eterno.", versiculo: "El gozo del Señor es nuestra fortaleza. — Nehemías 8:10", colorFondo: "#ede7f6", colorTexto: "#5e35b1" },
+  { texto: "Aunque el dolor te haga caer, en Dios siempre encontraras la fuerza para levantarte.", versiculo: "Cuando caí, me levantó el Señor. — Salmo 145:14", colorFondo: "#e0f2f1", colorTexto: "#004d40" },
+  { texto: "Dios te promete consuelo y paz, incluso cuando el alma esté rota.", versiculo: "Bienaventurados los que lloran, porque ellos recibirán consolación. — Mateo 5:4", colorFondo: "#fff3e0", colorTexto: "#e65100" },
+  { texto: "Tu tristeza no te define, Su amor es lo que realmente eres.", versiculo: "Porque yo te he amado con amor eterno. — Jeremías 31:3", colorFondo: "#e1f5fe", colorTexto: "#01579b" },
+  { texto: "Él está contigo en cada paso de tu dolor y cada lágrima que derrames.", versiculo: "En mi angustia clamé al Señor, y él me respondió. — Salmo 120:1", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "Aunque el dolor sea grande, tu esperanza en Él será más grande.", versiculo: "Los que esperan a Jehová tendrán nuevas fuerzas. — Isaías 40:31", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "En cada tristeza hay una semilla de esperanza que Él hará florecer.", versiculo: "Aunque el llanto dure toda la noche, con la mañana llega el gozo. — Salmo 30:5", colorFondo: "#dcedc8", colorTexto: "#558b2f" },
+  { texto: "Si tus fuerzas fallan, Él será tu fortaleza y consuelo.", versiculo: "Dios es nuestro refugio y fortaleza, nuestro pronto auxilio en las tribulaciones. — Salmo 46:1", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "No tienes que cargar sola tu tristeza, Él lleva tus cargas contigo.", versiculo: "Echen sobre él toda ansiedad, porque él cuida de ustedes. — 1 Pedro 5:7", colorFondo: "#ffecb3", colorTexto: "#ff6f00" },
+  { texto: "Tu tristeza no es para siempre, en Él hallarás consuelo y renovación.", versiculo: "Él les dará hermosura en lugar de ceniza. — Isaías 61:3", colorFondo: "#f8bbd0", colorTexto: "#c2185b" }
+]
+,
+            feliz: [
+  { texto: "La felicidad no está en el destino, sino en el viaje, y tú eres parte de mi mejor aventura.", versiculo: "Este es el día que hizo el Señor; nos gozaremos y alegraremos en él. — Salmo 118:24", colorFondo: "#fff59d", colorTexto: "#fbc02d" },
+  { texto: "Cada día es un regalo, y hoy me siento agradecido por ti y por todo lo bueno que nos rodea.", versiculo: "Gocémonos y alegrémonos en él. — Salmo 118:24", colorFondo: "#c8e6c9", colorTexto: "#2e7d32" },
+  { texto: "La felicidad es un estado del corazón, y tú has llenado el mío de alegría.", versiculo: "Porque el gozo del Señor es nuestra fortaleza. — Nehemías 8:10", colorFondo: "#e1f5fe", colorTexto: "#0277bd" },
+  { texto: "No importa lo que venga, mientras estemos juntos, siempre habrá felicidad.", versiculo: "Alegraos siempre en el Señor. — Filipenses 4:4", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "Cuando estamos juntos, cada momento se convierte en una razón para sonreír.", versiculo: "La bendición del Señor es la que enriquece, y no añade tristeza con ella. — Proverbios 10:22", colorFondo: "#ffccbc", colorTexto: "#f57c00" },
+  { texto: "La felicidad es amar y ser amado, y contigo cada día es una bendición.", versiculo: "El Señor es mi pastor; nada me faltará. — Salmo 23:1", colorFondo: "#ffe0b2", colorTexto: "#d84315" },
+  { texto: "La verdadera felicidad se encuentra en compartir momentos especiales, y tú eres mi momento más especial.", versiculo: "Hay más felicidad en dar que en recibir. — Hechos 20:35", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "Cada risa, cada abrazo, son pequeñas bendiciones que hacen mi vida más feliz.", versiculo: "El Señor tu Dios está en medio de ti, el cual te salvará; se gozará sobre ti con alegría. — Sofonías 3:17", colorFondo: "#ffebee", colorTexto: "#c62828" },
+  { texto: "La felicidad no es algo que buscamos, es algo que encontramos en lo simple de la vida.", versiculo: "Felices los que guardan sus estatutos y lo buscan de todo corazón. — Salmo 119:2", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "Cada día a tu lado es un recordatorio de cuán bendecido soy.", versiculo: "En tu presencia hay plenitud de gozo; delicias a tu diestra para siempre. — Salmo 16:11", colorFondo: "#ffecb3", colorTexto: "#ff6f00" },
+  { texto: "Tu amor es mi mayor felicidad, y cada día contigo es un motivo de agradecimiento.", versiculo: "El gozo del Señor es nuestra fortaleza. — Nehemías 8:10", colorFondo: "#f8bbd0", colorTexto: "#ad1457" },
+  { texto: "La felicidad se encuentra en los pequeños momentos, y tú eres mi pequeño gran momento.", versiculo: "Entonces, mi alma se alegrará en el Señor; se regocijará en su salvación. — Salmo 35:9", colorFondo: "#d1c4e9", colorTexto: "#512da8" },
+  { texto: "Cada sonrisa que compartimos es una bendición del cielo que ilumina nuestro camino.", versiculo: "Porque vosotros, hermanos, fuisteis llamados a libertad. — Gálatas 5:13", colorFondo: "#f0f4c3", colorTexto: "#9e9d24" },
+  { texto: "La felicidad es el eco de un corazón lleno de gratitud, y el mío está lleno por ti.", versiculo: "Dichoso el que tiene al Señor como su Dios. — Salmo 144:15", colorFondo: "#ffe0b2", colorTexto: "#d84315" },
+  { texto: "Que la alegría de cada día te envuelva, porque cada momento contigo es pura felicidad.", versiculo: "Tu amor es mejor que la vida; mis labios te alabarán. — Salmo 63:3", colorFondo: "#e1f5fe", colorTexto: "#0277bd" },
+  { texto: "La felicidad es vivir plenamente, y contigo cada día es una nueva bendición.", versiculo: "Y él me hará descansar junto a aguas de reposo. — Salmo 23:2", colorFondo: "#ffccbc", colorTexto: "#f57c00" },
+  { texto: "El gozo de la vida se encuentra en dar amor, y tú me has enseñado a amar más cada día.", versiculo: "Hay más felicidad en dar que en recibir. — Hechos 20:35", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "La felicidad no depende de lo que tenemos, sino de a quién tenemos a nuestro lado.", versiculo: "El Señor es mi luz y mi salvación; ¿a quién temeré? — Salmo 27:1", colorFondo: "#fff9c4", colorTexto: "#fbc02d" },
+  { texto: "Que la felicidad llene tu corazón, porque el amor de Dios es la mayor alegría que podemos recibir.", versiculo: "Y los que siembran con lágrimas, cosecharán con gritos de alegría. — Salmo 126:5", colorFondo: "#fce4ec", colorTexto: "#880e4f" }
+]
+,
+            cansada: [
+  { texto: "Descansa en Él, porque Él te dará fuerzas para seguir.", versiculo: "Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar. — Mateo 11:28", colorFondo: "#e1f5fe", colorTexto: "#0277bd" },
+  { texto: "Aunque el cuerpo esté cansado, Él renueva tu espíritu cada día.", versiculo: "El que habita al abrigo del Altísimo morará bajo la sombra del Omnipotente. — Salmo 91:1", colorFondo: "#c8e6c9", colorTexto: "#2e7d32" },
+  { texto: "Cuando te sientas agotada, Él te levantará con nuevas fuerzas.", versiculo: "Pero los que esperan a Jehová tendrán nuevas fuerzas; levantarán alas como las águilas; correrán, y no se cansarán; caminarán, y no se fatigarán. — Isaías 40:31", colorFondo: "#ffe0b2", colorTexto: "#d84315" },
+  { texto: "El descanso viene de Su paz, recarga tu alma en Su amor.", versiculo: "En paz me acostaré y asimismo dormiré, porque solo tú, Jehová, me haces vivir confiado. — Salmo 4:8", colorFondo: "#ffebee", colorTexto: "#c62828" },
+  { texto: "No tienes que luchar sola, Él está contigo en cada paso del camino.", versiculo: "El Señor es mi pastor; nada me faltará. — Salmo 23:1", colorFondo: "#f8bbd0", colorTexto: "#ad1457" },
+  { texto: "En tu cansancio, Su descanso te restaurará.", versiculo: "El Señor sostiene a los humildes, pero derriba a los malvados hasta el suelo. — Salmo 147:6", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "Cuando todo parece pesado, Él te lleva en Sus brazos.", versiculo: "Lanzad sobre él toda vuestra ansiedad, porque él tiene cuidado de vosotros. — 1 Pedro 5:7", colorFondo: "#d1c4e9", colorTexto: "#512da8" },
+  { texto: "Permite que Su paz llene tu ser y te dé el descanso que tanto necesitas.", versiculo: "La paz os dejo, mi paz os doy; no os la doy como el mundo la da. — Juan 14:27", colorFondo: "#ffccbc", colorTexto: "#f57c00" },
+  { texto: "Aunque tu cuerpo esté cansado, tu alma puede encontrar descanso en Él.", versiculo: "Y el Dios de paz os santifique por completo; y todo vuestro ser, espíritu, alma y cuerpo, sea guardado irreprensible para la venida de nuestro Señor Jesucristo. — 1 Tesalonicenses 5:23", colorFondo: "#fff59d", colorTexto: "#fbc02d" },
+  { texto: "Dios te da descanso, renueva tus fuerzas y te permite seguir adelante.", versiculo: "Él da esfuerzo al cansado, y multiplica las fuerzas al que no tiene ningunas. — Isaías 40:29", colorFondo: "#e0f7fa", colorTexto: "#006064" },
+  { texto: "Aunque el camino sea largo, Él te da la fortaleza para seguir.", versiculo: "Jehová es mi fortaleza y mi escudo; en él confió mi corazón, y fui ayudado. — Salmo 28:7", colorFondo: "#fff9c4", colorTexto: "#fbc02d" },
+  { texto: "Haz una pausa y siente Su presencia, Él te renovará.", versiculo: "Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar. — Mateo 11:28", colorFondo: "#fce4ec", colorTexto: "#880e4f" },
+  { texto: "El cansancio se disipa cuando dejas que Él te lleve en sus brazos.", versiculo: "Yo soy el buen pastor; el buen pastor da su vida por las ovejas. — Juan 10:11", colorFondo: "#ffccbc", colorTexto: "#f57c00" },
+  { texto: "Dios tiene descanso para ti, en Él puedes hallar reposo.", versiculo: "La paz os dejo, mi paz os doy; no os la doy como el mundo la da. — Juan 14:27", colorFondo: "#f3e5f5", colorTexto: "#6a1b9a" },
+  { texto: "Aunque el camino sea arduo, Él te renueva con cada paso.", versiculo: "Fortalece mis pasos conforme a tu palabra, y no dejes que ninguna iniquidad se enseñoree de mí. — Salmo 119:133", colorFondo: "#ffebee", colorTexto: "#c62828" },
+  { texto: "El descanso no solo es físico, sino también espiritual, en Él hallamos paz.", versiculo: "Te haré descansar bajo sus alas; estarás seguro bajo su sombra. — Salmo 91:4", colorFondo: "#ffe0b2", colorTexto: "#d84315" },
+  { texto: "Cuando sientas que no puedes más, Él te dará las fuerzas para seguir.", versiculo: "Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo. — Romanos 15:13", colorFondo: "#f0f4c3", colorTexto: "#9e9d24" },
+  { texto: "Su paz te fortalecerá, y Él restaurará tus fuerzas.", versiculo: "La paz de Dios, que sobrepasa todo entendimiento, guardará vuestros corazones y vuestros pensamientos en Cristo Jesús. — Filipenses 4:7", colorFondo: "#f8bbd0", colorTexto: "#ad1457" },
+  { texto: "Descansa en Su presencia y deja que Él renueve tu energía.", versiculo: "Tú guardarás en completa paz a aquel cuyo pensamiento en ti persevera; porque en ti ha confiado. — Isaías 26:3", colorFondo: "#c8e6c9", colorTexto: "#2e7d32" }
+]
+
+        };
+
+        function obtenerParametro(nombre) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(nombre);
+        }
+
+        window.onload = function() {
+            const estado = obtenerParametro('estado');
+            if (estado && mensajes[estado]) {
+                const mensajesEstado = mensajes[estado];
+                const indice = Math.floor(Math.random() * mensajesEstado.length);
+                const mensajeMostrar = mensajesEstado[indice];
+
+                document.getElementById('mensaje').textContent = mensajeMostrar.texto;
+                document.getElementById('versiculo').textContent = mensajeMostrar.versiculo;
+
+                // Aplicar colores dinámicamente
+                const estilosDinamicos = document.getElementById('estilosDinamicos');
+                estilosDinamicos.innerHTML += `
+                    body {
+                        background-color: ${mensajeMostrar.colorFondo};
+                        color: ${mensajeMostrar.colorTexto};
+                    }
+                `;
+                document.querySelector('.volver').style.backgroundColor = mensajeMostrar.colorFondo;
+                document.querySelector('.volver').style.color = mensajeMostrar.colorTexto;
+            } else {
+                document.getElementById('mensaje').textContent = "Lo siento, no se encontró ese estado de ánimo.";
+            }
+        };
+    </script>
+</body>
+</html>
